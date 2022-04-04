@@ -5,3 +5,6 @@ const inboxIcon = "assets/icons/inbox.svg";
 const cartIcon = "assets/icons/bag.svg";
 const searchIcon = "assets/icons/search.svg";
 const addUserIcon = "assets/icons/add-user.svg";
+
+const avatar = "assets/images/avatar.png";
+const preview = "assets/images/preview-image.png";
