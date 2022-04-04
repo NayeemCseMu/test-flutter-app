@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_task/config/route/app_route.dart';
+import 'package:test_task/constants/app_size.dart';
 import 'package:test_task/module/controller/data_controller.dart';
 
 class SplashPage extends StatefulWidget {
@@ -10,26 +12,21 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(3.seconds).then((value) => Get.offAndToNamed(AppRoute.explorePage));
+  }
   @override
   Widget build(BuildContext context) {
     DataController data = Get.find();
     return Scaffold(
-      body: GetBuilder<DataController>(
-        init: DataController(),
-        builder: (data) {
-          if (data.isLoading.value) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                final item = data.dataInfo.products![index];
-                return Image.network(item.thumbnail!);
-              },
-            );
-          }
-        },
+      body: OrientationBuilder(
+        builder: (context,orientation) {
+          ResponsiveSize.init(context, orientation);
+          return Column(children: [],);
+        }
       ),
     );
   }
